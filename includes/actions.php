@@ -37,7 +37,7 @@ function getProducts()
  * @param $id
  * @return mixed
  */
-function getDishDetails($id)
+function getProductDetails($id)
 {
     $tags = [
         1 => [
