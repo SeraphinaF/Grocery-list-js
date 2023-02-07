@@ -43,15 +43,13 @@ function makeDataCard(data) {
         let category = document.createElement('h3')
         category.innerHTML = `${card.category}`;
         groceryCard.appendChild(category);
-    }}
-
-
-
-//             let image = document.createElement('img');
-//             image.src = card.image;
-//             image.classList.add('image');
-//             groceryCard.appendChild(image);
-
+    
+        let image = document.createElement('img');
+        image.src = card.image;
+        image.classList.add('image');
+        groceryCard.appendChild(image);
+    }
+}
 //             let button = document.createElement('button');
 //             button.classList.add('btn');
 //             button.innerHTML = 'Meer details';

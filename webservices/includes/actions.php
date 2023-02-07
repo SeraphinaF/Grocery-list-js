@@ -9,26 +9,31 @@ function getProducts()
             "id" => 1,
             "name" => "Pindakaas",
             "category" => "Broodbeleg",
+            "image" => "",
         ],
         [
             "id" => 2,
             "name" => "Boerenkool",
             "category" => "Groenten",
+            "image" => "",
         ],
         [
             "id" => 3,
             "name" => "Tomaten",
             "category" => "Groenten",
+            "image" => "",
         ],
         [
             "id" => 4,
             "name" => "Kaas",
             "category" => "Zuivel",
+            "image" => "",
         ],
         [
             "id" => 5,
             "name" => "Melk",
             "category" => "Zuivel",
+            "image" => "",
         ]
     ];
 }
