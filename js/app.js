@@ -1,10 +1,9 @@
 window.addEventListener('load', init);
 
-let apiUrl = "./webservices";
+let apiUrl = "./webservices/index.php";
 let dishCard;
-let makeDataCard;
 let vacationData = {};
-let gallery;
+let gallery = document.getElementById('gallery');
 
 
 function init() {
@@ -12,6 +11,7 @@ function init() {
 }
 
 const ajaxRequest = (url, func) => {
+    console.log(apiUrl);
     fetch(url)
         .then((response) => {
             if (!response.ok) {
@@ -24,42 +24,45 @@ const ajaxRequest = (url, func) => {
             console.log(error)
         });
 
-
-    function makeDataCard(data) {
-
-        for (let card of data) {
-
-            let gallery = document.getElementById('new-gallery');
-            let vacationCard = document.createElement('div');
-            vacationCard.classList.add('vacation-card');
-            vacationCard.dataset.id = card.id;
-
-            gallery.appendChild(vacationCard);
-
-            let locations = document.createElement('h2')
-            locations.innerHTML = `${card.location}`;
-            vacationCard.appendChild(locations)
-
-            let number = document.createElement('h3')
-            number.innerHTML = `${card.number}`;
-            vacationCard.appendChild(number);
-
-            let image = document.createElement('img');
-            image.src = card.image;
-            image.classList.add('image');
-            vacationCard.appendChild(image);
-
-            let button = document.createElement('button');
-            button.classList.add('btn');
-            button.innerHTML = 'Meer details';
-            button.dataset.id = card.id;
-
-            button.addEventListener('click', () => {
-                ajaxRequest(`${apiUrl}?id=${card.id}`, showDetails)
-            });
-
-            vacationCard.appendChild(button)
-            vacationData[card.id] = card;
-        }
-    }
 }
+function makeDataCard(data) {
+
+    for (let card of data) {
+        console.log(data);
+
+        let groceryCard = document.createElement('div');
+        groceryCard.classList.add('grocery-card');
+        groceryCard.dataset.id = card.id;
+
+        gallery.appendChild(groceryCard);
+
+        let name = document.createElement('h2')
+        name.innerHTML = `${card.name}`;
+        groceryCard.appendChild(name)'
+    
+        let category = document.createElement('h3')
+        category.innerHTML = `${card.category}`;
+        groceryCard.appendChild(category);
+    }}
+
+
+
+//             let image = document.createElement('img');
+//             image.src = card.image;
+//             image.classList.add('image');
+//             groceryCard.appendChild(image);
+
+//             let button = document.createElement('button');
+//             button.classList.add('btn');
+//             button.innerHTML = 'Meer details';
+//             button.dataset.id = card.id;
+
+//             button.addEventListener('click', () => {
+//                 ajaxRequest(`${apiUrl}?id=${card.id}`, showDetails)
+//             });
+
+//             groceryCard.appendChild(button)
+//             vacationData[card.id] = card;
+//         }
+//     }
+// }
