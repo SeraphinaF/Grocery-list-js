@@ -25,6 +25,7 @@ const ajaxRequest = (url, func) => {
         });
 
 }
+
 function makeDataCard(data) {
 
     for (let card of data) {
@@ -36,9 +37,9 @@ function makeDataCard(data) {
 
         gallery.appendChild(groceryCard);
 
-        let name = document.createElement('h2')
+        let name = document.createElement('h2');
         name.innerHTML = `${card.name}`;
-        groceryCard.appendChild(name)'
+        groceryCard.appendChild(name);
     
         let category = document.createElement('h3')
         category.innerHTML = `${card.category}`;
@@ -48,19 +49,48 @@ function makeDataCard(data) {
         image.src = card.image;
         image.classList.add('image');
         groceryCard.appendChild(image);
+
+        let button = document.createElement('button');
+        button.classList.add('btn');
+        button.innerHTML = 'Meer details';
+        button.dataset.id = card.id;
+        button.addEventListener('click', () => {
+            ajaxRequest(`${apiUrl}?id=${card.id}`, showDetails)
+        });
+
+        groceryCard.appendChild(button);
+        
     }
-}
-//             let button = document.createElement('button');
-//             button.classList.add('btn');
-//             button.innerHTML = 'Meer details';
-//             button.dataset.id = card.id;
 
-//             button.addEventListener('click', () => {
-//                 ajaxRequest(`${apiUrl}?id=${card.id}`, showDetails)
-//             });
+    function showDetails(card){
+        console.log(card)
 
-//             groceryCard.appendChild(button)
-//             vacationData[card.id] = card;
-//         }
-//     }
-// }
+        let detailsCard = document.getElementById('modal-content')
+       
+        //empty the div
+        detailsCard.innerHTML = '';
+        detailsCard.style.display ='block';
+
+        //add content
+        let detailsName = document.createElement("h2")
+        detailsName.innerHTML = card.detailsCard + 'Details:';
+        detailsName.appendChild(detailsCard);
+
+        let description = document.createElement("p");
+        description.innerHTML = '<br' + card.description;
+        detailsCard.appendChild(description);
+        
+        //close details
+        let closeDetails = document.createElement('button')
+        closeDetails.classList.add("buttonClass")
+        closeDetails.addEventListener("click", () => {
+            detailsCard.style.display = "none";
+        });
+
+        closeDetails.innerHTML = "close details";
+        detailsCard.appendChild(closeDetails);
+        }
+    }
+
+
+

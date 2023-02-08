@@ -9,31 +9,31 @@ function getProducts()
             "id" => 1,
             "name" => "Pindakaas",
             "category" => "Broodbeleg",
-            "image" => "",
+            "image" => "./images/pindakaas.jpg",
         ],
         [
             "id" => 2,
             "name" => "Boerenkool",
             "category" => "Groenten",
-            "image" => "",
+            "image" => "./images/boerenkool.jpg",
         ],
         [
             "id" => 3,
             "name" => "Tomaten",
             "category" => "Groenten",
-            "image" => "",
+            "image" => "./images/tomaten.jpg",
         ],
         [
             "id" => 4,
             "name" => "Kaas",
             "category" => "Zuivel",
-            "image" => "",
+            "image" => "./images/kaas.jpg",
         ],
         [
             "id" => 5,
             "name" => "Melk",
             "category" => "Zuivel",
-            "image" => "",
+            "image" => "./images/melk.jpg",
         ]
     ];
 }
@@ -46,23 +46,23 @@ function getProductDetails($id)
 {
     $tags = [
         1 => [
-            "recipe" => "Put it in the oven and go!",
+            "description" => "Put it in the oven and go!",
             "tags" => ['cheese', 'oven']
         ],
         2 => [
-            "recipe" => "You can make this delicious Dutch meal by ...",
+            "description" => "You can make this delicious Dutch meal by ...",
             "tags" => ['unox', 'healthy', 'stamppot', 'boerenkool']
         ],
         3 => [
-            "recipe" => "Very nice when your grandma prepares this meal",
+            "description" => "Very nice when your grandma prepares this meal",
             "tags" => ['omnomnom']
         ],
         4 => [
-            "recipe" => "Everytime in the city after midnight",
+            "description" => "Everytime in the city after midnight",
             "tags" => ['kapsalon', 'tasty', 'meat']
         ],
         5 => [
-            "recipe" => "Specialty when on holiday in Spain",
+            "description" => "Specialty when on holiday in Spain",
             "tags" => ['fish']
         ],
     ];
