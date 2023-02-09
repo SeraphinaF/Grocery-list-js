@@ -1,10 +1,13 @@
 window.addEventListener('load', init);
 
 let apiUrl = "./webservices/index.php";
-let dishCard;
-let vacationData = {};
+// let dishCard;
+// let vacationData = {};
 let gallery = document.getElementById('gallery');
 
+//modal variables
+let modal = document.getElementById('myModal');
+// let closeBtn = document.getElementById('modal-close');
 
 function init() {
     ajaxRequest(apiUrl, makeDataCard)
@@ -23,7 +26,6 @@ const ajaxRequest = (url, func) => {
         .catch((error) => {
             console.log(error)
         });
-
 }
 
 function makeDataCard(data) {
@@ -40,57 +42,126 @@ function makeDataCard(data) {
         let name = document.createElement('h2');
         name.innerHTML = `${card.name}`;
         groceryCard.appendChild(name);
-    
-        let category = document.createElement('h3')
-        category.innerHTML = `${card.category}`;
-        groceryCard.appendChild(category);
-    
+
+        let price = document.createElement('h3')
+        price.innerHTML = `${card.price}`;
+        groceryCard.appendChild(price);
+
         let image = document.createElement('img');
         image.src = card.image;
         image.classList.add('image');
         groceryCard.appendChild(image);
 
-        let button = document.createElement('button');
-        button.classList.add('btn');
-        button.innerHTML = 'Meer details';
-        button.dataset.id = card.id;
-        button.addEventListener('click', () => {
+        let detailsBtn = document.createElement('button');
+        detailsBtn.classList.add('btn');
+        detailsBtn.innerHTML = 'Meer details';
+        detailsBtn.dataset.id = card.id;
+        // detailsBtn.addEventListener('click', showDetails);
+        detailsBtn.addEventListener('click', () => {
             ajaxRequest(`${apiUrl}?id=${card.id}`, showDetails)
         });
 
-        groceryCard.appendChild(button);
-        
+        groceryCard.appendChild(detailsBtn);
     }
 
-    function showDetails(card){
-        console.log(card)
+}
 
+function showDetails(card) {
+
+        modal.style.visibility = 'visible';
         let detailsCard = document.getElementById('modal-content')
-       
-        //empty the div
-        detailsCard.innerHTML = '';
-        detailsCard.style.display ='block';
 
-        //add content
+        console.log(detailsCard)
+        //empty the div
+        detailsCard.innerHTML = "";
+        detailsCard.style.display = 'block';
+
+        //add content title:
         let detailsName = document.createElement("h2")
         detailsName.innerHTML = card.detailsCard + 'Details:';
-        detailsName.appendChild(detailsCard);
+        detailsCard.appendChild(detailsName);
 
-        let description = document.createElement("p");
-        description.innerHTML = '<br' + card.description;
-        detailsCard.appendChild(description);
-        
-        //close details
-        let closeDetails = document.createElement('button')
-        closeDetails.classList.add("buttonClass")
+        //add ingredients
+        let ingredients = document.createElement("p");
+        ingredients.innerHTML = card.ingredients;
+        detailsCard.appendChild(ingredients);
+
+        let category = document.createElement("h5");
+        category.innerHTML = 'Categorie:' + '' +card.tags;
+        detailsCard.appendChild(category);
+
+        console.log(card.ingredients)
+
+        let closeDetails = document.getElementById('modal-close');
         closeDetails.addEventListener("click", () => {
-            detailsCard.style.display = "none";
+            detailsCard.style.visibility = "hidden";
         });
 
-        closeDetails.innerHTML = "close details";
-        detailsCard.appendChild(closeDetails);
-        }
+        // let closeDetails = document.getElementById('modal-close');
+        // closeDetails.addEventListener('click', closeDetails);
+
+        //close details
+        // let closeDetails = document.createElement('button')
+        // closeDetails.classList.add("buttonClass")
+        // closeDetails.addEventListener("click", () => {
+        //     detailsCard.style.display = "none";
+        // });
+
+        // closeDetails.innerHTML = "close details";
+        // detailsCard.appendChild(closeDetails);
+
+        // let closeButton = document.getElementById('modal-close')
+
+        // closeButton.addEventListener('click', () => {
+        //     closeButton.style.display = 'none'
+        // });
     }
+
+    // function closeDetails(){
+    //     console.log(123)
+    //     modal.style.visibility = 'hidden';
+        
+    // }
+
+//     function showDetails(card) {
+//         console.log(card)
+
+//         let detailsCard = document.getElementById('modal-content')
+
+//         //empty the div
+//         detailsCard.innerHTML = "";
+//         detailsCard.style.display = 'block';
+
+//         //add content title:
+//         let detailsName = document.createElement("h2")
+//         detailsName.innerHTML = card.detailsCard + 'Details:';
+//         detailsName.appendChild(detailsCard);
+
+//         //add description
+//         console.log(card.description)
+
+//         let description = document.createElement("p");
+//         description.innerHTML = '<br' + card.description;
+//         detailsCard.appendChild(description);
+
+//         //close details
+//         let closeDetails = document.createElement('button')
+//         closeDetails.classList.add("buttonClass")
+//         closeDetails.addEventListener("click", () => {
+//             detailsCard.style.display = "none";
+//         });
+
+//         closeDetails.innerHTML = "close details";
+//         detailsCard.appendChild(closeDetails);
+
+//         let closeButton = document.getElementById('modal-close')
+
+//         closeButton.addEventListener('click', () => {
+//             closeButton.style.display = 'none'
+//         });
+//     }
+
+// }
 
 
 

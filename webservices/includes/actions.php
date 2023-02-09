@@ -8,32 +8,62 @@ function getProducts()
         [
             "id" => 1,
             "name" => "Pindakaas",
-            "category" => "Broodbeleg",
+            "price" => "€ 3.69",
             "image" => "./images/pindakaas.jpg",
         ],
         [
             "id" => 2,
             "name" => "Boerenkool",
-            "category" => "Groenten",
+            "price" => "€ 2.00",
             "image" => "./images/boerenkool.jpg",
         ],
         [
             "id" => 3,
             "name" => "Tomaten",
-            "category" => "Groenten",
+            "price" => "1,69 / 500 g",
             "image" => "./images/tomaten.jpg",
         ],
         [
             "id" => 4,
             "name" => "Kaas",
-            "category" => "Zuivel",
+            "price" => "Zuivel",
             "image" => "./images/kaas.jpg",
         ],
         [
             "id" => 5,
             "name" => "Melk",
-            "category" => "Zuivel",
+            "price" => "Zuivel",
             "image" => "./images/melk.jpg",
+        ],
+        [
+            "id" => 6,
+            "name" => "Beefburger",
+            "price" => "Vlees",
+            "image" => "./images/beefburger.jpeg",
+        ],
+        [
+            "id" => 7,
+            "name" => "Desperados",
+            "price" => "Bier en Aperitieven",
+            "image" => "./images/desperados.jpeg",
+        ],
+        [
+            "id" => 8,
+            "name" => "Unox noodles kip",
+            "price" => "Tussendoortje",
+            "image" => "./images/noodles.jpg",
+        ],
+        [
+            "id" => 9,
+            "name" => "Dr. Oetker Ristorante pizza salami",
+            "price" => "Diepvries",
+            "image" => "./images/pizza.jpg",
+        ],
+        [
+            "id" => 10,
+            "name" => "Lotus Biscoff speculoos koek",
+            "price" => "Zuivel",
+            "image" => "./images/lotus.jpg",
         ]
     ];
 }
@@ -46,25 +76,61 @@ function getProductDetails($id)
 {
     $tags = [
         1 => [
-            "description" => "Put it in the oven and go!",
-            "tags" => ['cheese', 'oven']
+            "ingredients" => "<strong>Ingrediënten:</strong> geroosterde pinda.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 0.00g per 100 gram",
+            "tags" => ['Broodbeleg']
         ],
         2 => [
-            "description" => "You can make this delicious Dutch meal by ...",
-            "tags" => ['unox', 'healthy', 'stamppot', 'boerenkool']
+            "ingredients" => "<strong>Ingrediënten:</strong> boerenkool. <br>
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 0.00g per 100 gram",
+            "tags" => ['Groenten']
         ],
         3 => [
-            "description" => "Very nice when your grandma prepares this meal",
-            "tags" => ['omnomnom']
+            "ingredients" => "<strong>ingredienten:</strong> tomaten.",
+            "tags" => ['Groenten']
         ],
         4 => [
-            "description" => "Everytime in the city after midnight",
-            "tags" => ['kapsalon', 'tasty', 'meat']
+            "ingredients" => "<strong>ingredienten:</strong> melk*, zout, zuursel, vegetarisch stremsel.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 1.90g per 100 gram
+            *Van weidemelk.",
+            "tags" => ['Zuivel']
         ],
         5 => [
-            "description" => "Specialty when on holiday in Spain",
-            "tags" => ['fish']
+            "ingredients" => "<strong>ingredienten:</strong> melk*, zout, zuursel, vegetarisch stremsel.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 1.90g per 100 gram
+            *Van weidemelk.",
+            "tags" => ['Zuivel']
         ],
+        6 => [
+            "ingredients" => "<strong>ingredienten:</strong> melk*, zout, zuursel, vegetarisch stremsel.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 1.90g per 100 gram
+            *Van weidemelk.",
+            "tags" => ['Zuivel']
+        ],
+        7 => [
+            "ingredients" => "<strong>ingredienten:</strong> melk*, zout, zuursel, vegetarisch stremsel.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 1.90g per 100 gram
+            *Van weidemelk.",
+            "tags" => ['Zuivel']
+        ],
+        8 => [
+            "ingredients" => "<strong>ingredienten:</strong> melk*, zout, zuursel, vegetarisch stremsel.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 1.90g per 100 gram
+            *Van weidemelk.",
+            "tags" => ['Zuivel']
+        ],
+        9 => [
+            "ingredients" => "<strong>ingredienten:</strong> melk*, zout, zuursel, vegetarisch stremsel.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 1.90g per 100 gram
+            *Van weidemelk.",
+            "tags" => ['Zuivel']
+        ],
+        10 => [
+            "ingredients" => "<strong>ingredienten:</strong> melk*, zout, zuursel, vegetarisch stremsel.
+            Waarvan toegevoegde suikers 0.00g per 100 gram en waarvan toegevoegd zout 1.90g per 100 gram
+            *Van weidemelk.",
+            "tags" => ['Zuivel']
+        ]
     ];
 
     return $tags[$id];
