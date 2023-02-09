@@ -74,7 +74,7 @@ function showDetails(card) {
         console.log(detailsCard)
         //empty the div
         detailsCard.innerHTML = "";
-        detailsCard.style.display = 'block';
+        // detailsCard.style.display = 'block';
 
         //add content title:
         let detailsName = document.createElement("h2")
@@ -94,7 +94,7 @@ function showDetails(card) {
 
         let closeDetails = document.getElementById('modal-close');
         closeDetails.addEventListener("click", () => {
-            detailsCard.style.visibility = "hidden";
+            modal.style.visibility = "hidden";
         });
 
         // let closeDetails = document.getElementById('modal-close');
