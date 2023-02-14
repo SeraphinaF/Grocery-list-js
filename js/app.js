@@ -1,13 +1,8 @@
 window.addEventListener('load', init);
 
 let apiUrl = "./webservices/index.php";
-// let dishCard;
-// let vacationData = {};
 let gallery = document.getElementById('gallery');
-
-//modal variables
 let modal = document.getElementById('myModal');
-// let closeBtn = document.getElementById('modal-close');
 
 function init() {
     ajaxRequest(apiUrl, makeDataCard)
@@ -39,24 +34,53 @@ function makeDataCard(data) {
 
         gallery.appendChild(groceryCard);
 
-        let name = document.createElement('h2');
-        name.innerHTML = `${card.name}`;
-        groceryCard.appendChild(name);
+        let favoriteBtn = document.createElement('button');
+        favoriteBtn.classList.add('favoriteBtn');
+        favoriteBtn.innerHTML = "🤍";
 
-        let price = document.createElement('h3')
-        price.innerHTML = `${card.price}`;
-        groceryCard.appendChild(price);
+    
+        let isFavorite = JSON.parse(localStorage.getItem(`favoriteItem-${card.id}`)) || false;
+
+        // Set the innerHTML of the button according to stored state
+        if (isFavorite) {
+            favoriteBtn.innerHTML = "❤️";
+          } else {
+            favoriteBtn.innerHTML = "🤍";
+          }
+        
+        favoriteBtn.addEventListener('click',()=>{
+            if(!isFavorite){
+                localStorage.setItem(`favoriteItem-${card.id}`, JSON.stringify(true));
+                isFavorite = true;  
+                favoriteBtn.innerHTML = "❤️";
+            }else{
+                localStorage.removeItem(`favoriteItem-${card.id}`);
+                isFavorite = false;
+                favoriteBtn.innerHTML = "🤍";
+            }
+        });
+        
+        groceryCard.appendChild(favoriteBtn);
 
         let image = document.createElement('img');
         image.src = card.image;
         image.classList.add('image');
         groceryCard.appendChild(image);
+        
+        let price = document.createElement('h3')
+        price.classList.add('product-price');
+        price.innerHTML = `${card.price}`;
+        groceryCard.appendChild(price);
+        
+        let name = document.createElement('h2');
+        name.classList.add('product-name');
+        name.innerHTML = `${card.name}`;
+        groceryCard.appendChild(name);
 
         let detailsBtn = document.createElement('button');
-        detailsBtn.classList.add('btn');
-        detailsBtn.innerHTML = 'Meer details';
+        detailsBtn.classList.add('detailsBtn');
+        detailsBtn.innerHTML = 'ℹ';
         detailsBtn.dataset.id = card.id;
-        // detailsBtn.addEventListener('click', showDetails);
         detailsBtn.addEventListener('click', () => {
             ajaxRequest(`${apiUrl}?id=${card.id}`, showDetails)
         });
@@ -68,100 +92,36 @@ function makeDataCard(data) {
 
 function showDetails(card) {
 
-        modal.style.visibility = 'visible';
-        let detailsCard = document.getElementById('modal-content')
+    modal.style.visibility = 'visible';
+    let detailsCard = document.getElementById('modal-content')
 
-        console.log(detailsCard)
-        //empty the div
-        detailsCard.innerHTML = "";
-        // detailsCard.style.display = 'block';
+    console.log(detailsCard)
+    //empty the div
+    detailsCard.innerHTML = "";
+    // detailsCard.style.display = 'block';
 
-        //add content title:
-        let detailsName = document.createElement("h2")
-        detailsName.innerHTML = card.detailsCard + 'Details:';
-        detailsCard.appendChild(detailsName);
+    //add content title:
+    let detailsName = document.createElement("h2")
+    detailsName.innerHTML = card.detailsCard + 'Details:';
+    detailsCard.appendChild(detailsName);
 
-        //add ingredients
-        let ingredients = document.createElement("p");
-        ingredients.innerHTML = card.ingredients;
-        detailsCard.appendChild(ingredients);
+    //add ingredients
+    let ingredients = document.createElement("p");
+    ingredients.innerHTML = card.ingredients;
+    detailsCard.appendChild(ingredients);
 
-        let category = document.createElement("h5");
-        category.innerHTML = 'Categorie:' + '' +card.tags;
-        detailsCard.appendChild(category);
+    let category = document.createElement("h5");
+    category.innerHTML = 'Categorie:' + '' + card.tags;
+    detailsCard.appendChild(category);
 
-        console.log(card.ingredients)
+    console.log(card.ingredients)
 
-        let closeDetails = document.getElementById('modal-close');
-        closeDetails.addEventListener("click", () => {
-            modal.style.visibility = "hidden";
-        });
+    let closeDetails = document.getElementById('modal-close');
+    closeDetails.addEventListener("click", () => {
+        modal.style.visibility = "hidden";
+    });
+}
 
-        // let closeDetails = document.getElementById('modal-close');
-        // closeDetails.addEventListener('click', closeDetails);
-
-        //close details
-        // let closeDetails = document.createElement('button')
-        // closeDetails.classList.add("buttonClass")
-        // closeDetails.addEventListener("click", () => {
-        //     detailsCard.style.display = "none";
-        // });
-
-        // closeDetails.innerHTML = "close details";
-        // detailsCard.appendChild(closeDetails);
-
-        // let closeButton = document.getElementById('modal-close')
-
-        // closeButton.addEventListener('click', () => {
-        //     closeButton.style.display = 'none'
-        // });
-    }
-
-    // function closeDetails(){
-    //     console.log(123)
-    //     modal.style.visibility = 'hidden';
-        
-    // }
-
-//     function showDetails(card) {
-//         console.log(card)
-
-//         let detailsCard = document.getElementById('modal-content')
-
-//         //empty the div
-//         detailsCard.innerHTML = "";
-//         detailsCard.style.display = 'block';
-
-//         //add content title:
-//         let detailsName = document.createElement("h2")
-//         detailsName.innerHTML = card.detailsCard + 'Details:';
-//         detailsName.appendChild(detailsCard);
-
-//         //add description
-//         console.log(card.description)
-
-//         let description = document.createElement("p");
-//         description.innerHTML = '<br' + card.description;
-//         detailsCard.appendChild(description);
-
-//         //close details
-//         let closeDetails = document.createElement('button')
-//         closeDetails.classList.add("buttonClass")
-//         closeDetails.addEventListener("click", () => {
-//             detailsCard.style.display = "none";
-//         });
-
-//         closeDetails.innerHTML = "close details";
-//         detailsCard.appendChild(closeDetails);
-
-//         let closeButton = document.getElementById('modal-close')
-
-//         closeButton.addEventListener('click', () => {
-//             closeButton.style.display = 'none'
-//         });
-//     }
-
-// }
 
 
 
