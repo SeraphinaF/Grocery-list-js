@@ -95,15 +95,14 @@ function showDetails(card) {
     modal.style.visibility = 'visible';
     let detailsCard = document.getElementById('modal-content')
 
-    console.log(detailsCard)
     //empty the div
     detailsCard.innerHTML = "";
     // detailsCard.style.display = 'block';
 
     //add content title:
-    let detailsName = document.createElement("h2")
-    detailsName.innerHTML = card.detailsCard + 'Details:';
-    detailsCard.appendChild(detailsName);
+    // let detailsName = document.createElement("h2")
+    // detailsName.innerHTML = card.detailsCard + 'Details:';
+    // detailsCard.appendChild(detailsName);
 
     //add ingredients
     let ingredients = document.createElement("p");
