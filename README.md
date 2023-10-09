@@ -1,1 +1,1 @@
-Web application in Javascript fetching from API using AJAX and DOM to display a list of groceries.
+Web application fetching from API endpoint using AJAX and DOM to display a list of groceries. Includes additional features like favorites that are saved in the localstorage and a modal with detail information.
